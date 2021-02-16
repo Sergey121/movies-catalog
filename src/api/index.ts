@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { MovieCollection } from '../models';
 
 const API_KEY = '1cb29ff067aae84cd85f5645165528dd';
 
@@ -15,10 +16,10 @@ const _get = (path: string, params?: Record<string, string | number>) => {
   });
 }
 
-const getList = (page = 1) => {
-  return _get('/movie/popular', {
+const getList = async (page = 1): Promise<MovieCollection> => {
+  return (await _get('/movie/popular', {
     page,
-  });
+  })).data;
 };
 
 export const API = {

@@ -1,0 +1,6 @@
+@import "src/scss/constants";
+
+.content {
+  max-width: $contentMaxWidth;
+  margin: auto;
+}
