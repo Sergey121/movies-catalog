@@ -1,0 +1,32 @@
+@import "src/scss/constants";
+
+.wrapper {
+  background-color: #121212;
+  height: 56px;
+  width: 100%;
+}
+
+.content {
+  max-width: $contentMaxWidth;
+  margin: auto;
+  padding: 4px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menuBtn {
+  height: 100%;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    fill: #ffffff;
+  }
+}

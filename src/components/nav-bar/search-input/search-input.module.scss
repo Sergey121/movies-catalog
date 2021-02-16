@@ -1,0 +1,50 @@
+.wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+
+  svg {
+    fill: #ffffff;
+  }
+}
+
+.input {
+  background-color: inherit;
+  outline: none;
+  border: none;
+  height: 100%;
+  color: #000000;
+  border-radius: 8px;
+  width: 48px;
+  transition: width 0.2s ease-in-out;
+
+  &:focus {
+    background-color: #ffffff;
+    padding-left: 10px;
+    padding-right: 50px;
+    width: 100%;
+
+    & + .searchIconWrapper {
+      svg {
+        fill: #000000;
+      }
+    }
+  }
+}
+
+.searchIconWrapper {
+  width: 48px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.searchIcon {
+
+}
