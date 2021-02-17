@@ -1,0 +1,24 @@
+$color: #fcbb22;
+
+.wrapper {
+  width: 64px;
+  height: 64px;
+
+  &:hover {
+    svg {
+      fill: $color;
+    }
+  }
+
+  svg {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    fill: rgba(0, 0, 0, 0.8);
+    transition: fill 0.2s ease;
+  }
+}
+
+.selected {
+  fill: $color;
+}

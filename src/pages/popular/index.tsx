@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styles from './popular.module.scss';
 import { MoviesList } from '../../components/movies-list';
 import { API } from '../../api';
 import { Movie } from '../../models';
@@ -18,7 +19,7 @@ const PopularPage = () => {
     getData();
   }, []);
   return (
-    <div>
+    <div className={styles.wrapper}>
       <MoviesList movies={list}/>
     </div>
   )
