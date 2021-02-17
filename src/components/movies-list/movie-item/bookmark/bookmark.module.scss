@@ -1,12 +1,10 @@
-$color: #fcbb22;
-
 .wrapper {
   width: 64px;
   height: 64px;
 
   &:hover {
     svg {
-      fill: $color;
+      fill: var(--colot-yellow);
     }
   }
 
@@ -20,5 +18,5 @@ $color: #fcbb22;
 }
 
 .selected {
-  fill: $color;
+  fill: var(--colot-yellow);
 }

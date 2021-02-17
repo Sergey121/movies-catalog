@@ -22,6 +22,13 @@ const getList = async (page = 1): Promise<MovieCollection> => {
   })).data;
 };
 
+const searchMovie = async (query: string): Promise<MovieCollection> => {
+  return (await _get('/search/movie', {
+    query: encodeURI(query),
+  })).data;
+}
+
 export const API = {
   getList,
+  searchMovie,
 }

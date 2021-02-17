@@ -1,7 +1,7 @@
 @import "src/scss/constants";
 
 .wrapper {
-  background-color: #121212;
+  background-color: var(--color-nav-bar-bg);
   height: 56px;
   width: 100%;
 }

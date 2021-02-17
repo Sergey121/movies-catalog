@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  padding: 12px;
+  border-bottom: 1px solid var(--color-light);
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.poster {
+  width: 50px;
+  height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: red;
+  border-radius: 4px;
+}
+
+.content {
+  padding: 4px 20px;
+}
+
+.title {
+  color: var(--color-light);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+
+  svg {
+    fill: var(--colot-yellow);
+    margin-right: 12px;
+  }
+
+  color: var(--color-light);
+}
