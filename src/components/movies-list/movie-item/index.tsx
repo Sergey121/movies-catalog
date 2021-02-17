@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from './movie-item.module.scss';
 import { Movie } from '../../../models';
 import { getFullImagePath } from '../../../helpers';
@@ -7,13 +7,18 @@ import { Bookmark } from './bookmark';
 
 type Props = {
   movie: Movie;
+  onMovieSelected: (movie: Movie) => void;
 };
 
 const MovieItem = (props: Props) => {
-  const { movie } = props;
+  const { movie, onMovieSelected } = props;
+
+  const handleSelect = useCallback(() => {
+    onMovieSelected(movie);
+  }, [onMovieSelected, movie])
 
   return (
-    <div className={styles.wrapper} style={{}}>
+    <div className={styles.wrapper} style={{}} onClick={handleSelect}>
       <div className={styles.poster} style={{
         backgroundImage: `url(${getFullImagePath(movie.poster_path)})`
       }}>

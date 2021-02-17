@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import { PopularPage } from './pages/popular';
+import { MovieDetailsPage } from './pages/movie-details';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact={true} path={'/'} component={PopularPage}/>
+            <Route exact={true} path={'/movie/:id'} component={MovieDetailsPage}/>
           </Switch>
         </Router>
       </main>
