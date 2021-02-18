@@ -5,6 +5,7 @@ import { Movie } from '../../models';
 import { API } from '../../api';
 import { getFullImagePath } from '../../helpers';
 import { Rating } from '../../components/rating';
+import { Bookmark } from '../../components/bookmark';
 
 type StateParams = {
   movie?: Movie;
@@ -56,7 +57,9 @@ const MovieDetailsPage = () => {
       <div className={styles.content}>
         <div className={styles.poster} style={{
           backgroundImage: `url(${getFullImagePath(movie.poster_path)})`
-        }}/>
+        }}>
+          <Bookmark className={styles.bookmark} movie={movie}/>
+        </div>
         <div className={styles.aboutMovie}>
           <h1>{movie.title}</h1>
           <div className={styles.subtitle}>{movie.overview}</div>

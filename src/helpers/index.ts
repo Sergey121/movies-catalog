@@ -6,3 +6,17 @@ export const getFullImagePath = (path: string | null | undefined) => {
   }
   return undefined;
 };
+
+export const STORE_KEYS = {
+  favoriteMovies: 'favorite_movies',
+};
+
+export const storeData = (key: string, data: object) => {
+  window.localStorage.setItem(key, JSON.stringify(data));
+}
+
+export const restoreData = (key: string, defaultValue: any) => {
+  const str = window.localStorage.getItem(key);
+  if (!str) return defaultValue;
+  return JSON.parse(str);
+}

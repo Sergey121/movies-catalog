@@ -18,5 +18,7 @@
 }
 
 .selected {
-  fill: var(--colot-yellow);
+  svg {
+    fill: var(--colot-yellow);
+  }
 }

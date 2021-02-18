@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styles from './movie-item.module.scss';
 import { Movie } from '../../../models';
 import { getFullImagePath } from '../../../helpers';
-import { Bookmark } from './bookmark';
+import { Bookmark } from '../../bookmark';
 import { Rating } from '../../rating';
 
 type Props = {
@@ -22,7 +22,7 @@ const MovieItem = (props: Props) => {
       <div className={styles.poster} style={{
         backgroundImage: `url(${getFullImagePath(movie.poster_path)})`
       }}>
-        <Bookmark className={styles.bookmark} selected={false}/>
+        <Bookmark className={styles.bookmark} movie={movie}/>
       </div>
       <div className={styles.content}>
         <Rating voteAverage={movie.vote_average}/>
