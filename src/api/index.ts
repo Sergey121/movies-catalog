@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MovieCollection } from '../models';
+import { Movie, MovieCollection } from '../models';
 
 const API_KEY = '1cb29ff067aae84cd85f5645165528dd';
 
@@ -28,7 +28,12 @@ const searchMovie = async (query: string): Promise<MovieCollection> => {
   })).data;
 }
 
+const getMovie = async (id: number): Promise<Movie> => {
+  return (await _get(`/movie/${id}`)).data;
+}
+
 export const API = {
   getList,
   searchMovie,
+  getMovie,
 }

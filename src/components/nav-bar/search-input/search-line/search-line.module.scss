@@ -28,16 +28,3 @@
   font-size: 18px;
   font-weight: bold;
 }
-
-.rating {
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-
-  svg {
-    fill: var(--colot-yellow);
-    margin-right: 12px;
-  }
-
-  color: var(--color-light);
-}

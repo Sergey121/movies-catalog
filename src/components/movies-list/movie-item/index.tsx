@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import styles from './movie-item.module.scss';
 import { Movie } from '../../../models';
 import { getFullImagePath } from '../../../helpers';
-import { StarIcon } from '../../star-icon';
 import { Bookmark } from './bookmark';
+import { Rating } from '../../rating';
 
 type Props = {
   movie: Movie;
@@ -25,10 +25,7 @@ const MovieItem = (props: Props) => {
         <Bookmark className={styles.bookmark} selected={false}/>
       </div>
       <div className={styles.content}>
-        <div className={styles.ratingWrapper}>
-          <StarIcon className={styles.ratingStar}/>
-          <span>{movie.vote_average}</span>
-        </div>
+        <Rating voteAverage={movie.vote_average}/>
         <div className={styles.title}>
           {movie.title}
         </div>

@@ -6,8 +6,10 @@ import { SearchLine } from './search-line';
 import { Movie } from '../../../models';
 import { API } from '../../../api';
 import { useOnClickOutside } from '../../../hooks/useClickOutside';
+import { useHistory } from 'react-router-dom';
 
 const SearchInput = () => {
+  const history = useHistory();
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -44,6 +46,13 @@ const SearchInput = () => {
     getMovies(search);
   }, [search]);
 
+  const handleNavigateToMovie = useCallback((movie: Movie) => {
+    history.push(`/movie/${movie.id}`, {
+      movie,
+    });
+    setOpen(false);
+  }, [history]);
+
   const listContent = useMemo(() => {
     if (loading) {
       return (
@@ -60,7 +69,7 @@ const SearchInput = () => {
         <div className={styles.listWrapper}>
           {movies.map(m => {
             return (
-              <SearchLine key={m.id} movie={m}/>
+              <SearchLine onSelected={handleNavigateToMovie} key={m.id} movie={m}/>
             );
           })}
         </div>
@@ -68,7 +77,7 @@ const SearchInput = () => {
     }
 
     return null;
-  }, [loading, movies]);
+  }, [loading, movies, handleNavigateToMovie]);
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
