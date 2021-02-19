@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './menu.module.scss';
 import { createPortal } from 'react-dom';
-import { ReactComponent as CloseIcon } from './close.svg';
 import { Link } from 'react-router-dom';
+import { CloseIcon } from '../../close-icon';
 
 type Props = {
   opened: boolean;

@@ -1,0 +1,33 @@
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+}
+
+.content {
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: -70px;
+  right: 0;
+  padding: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: inherit;
+
+  svg {
+    width: 48px;
+    height: 48px;
+    fill: var(--color-light);
+  }
+}

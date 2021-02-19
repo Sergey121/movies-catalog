@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './movie-details.module.scss';
 import { useLocation, useParams } from 'react-router-dom';
-import { Movie } from '../../models';
+import { Movie, Video } from '../../models';
 import { API } from '../../api';
 import { getFullImagePath } from '../../helpers';
 import { Rating } from '../../components/rating';
 import { Bookmark } from '../../components/bookmark';
+import { ReactComponent as PlayBtn } from './play_arrow.svg';
+import { TrailerPopup } from '../../components/trailer-popup';
 
 type StateParams = {
   movie?: Movie;
@@ -20,6 +22,8 @@ const MovieDetailsPage = () => {
 
   const [loadingMovie, setLoadingMovie] = useState(false);
   const [movie, setMovie] = useState<Movie>();
+  const [video, setVideo] = useState<Video>();
+  const [showTrailer, setShowTrailer] = useState(false);
 
   useEffect(() => {
     if (state && state.movie) {
@@ -41,6 +45,29 @@ const MovieDetailsPage = () => {
       getMovie(+params.id);
     }
   }, [state]);
+
+  useEffect(() => {
+    if (movie) {
+      const getVideos = async () => {
+        const res = await API.getVideos(movie.id);
+        const v = res.results.find(v => v.site === 'YouTube' && v.type === 'Trailer');
+
+        if (v) {
+          setVideo(v);
+        }
+      };
+
+      getVideos();
+    }
+  }, [movie]);
+
+  const handleOpenTrailerPopup = useCallback(() => {
+    setShowTrailer(true);
+  }, []);
+
+  const handleCloseTrailerPopup = useCallback(() => {
+    setShowTrailer(false);
+  }, []);
 
   if (loadingMovie || !movie) {
     return (
@@ -64,8 +91,13 @@ const MovieDetailsPage = () => {
           <h1>{movie.title}</h1>
           <div className={styles.subtitle}>{movie.overview}</div>
           <Rating voteAverage={movie.vote_average}/>
+          <button onClick={handleOpenTrailerPopup} className={styles.trailer}>
+            <PlayBtn/>
+            <span>Trailer</span>
+          </button>
         </div>
       </div>
+      {showTrailer && video && <TrailerPopup videoId={video.key} onClose={handleCloseTrailerPopup}/>}
     </div>
   );
 };
