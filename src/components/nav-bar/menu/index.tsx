@@ -37,7 +37,7 @@ const Menu = (props: Props) => {
         </nav>
       </div>
     </div>,
-    document.body,
+    document.querySelector('#root') as HTMLDivElement,
   );
 };
 

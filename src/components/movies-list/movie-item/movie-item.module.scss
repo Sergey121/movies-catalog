@@ -2,6 +2,8 @@
 
 .wrapper {
   background-color: var(--color-nav-bar-bg);
+  overflow: hidden;
+  padding-bottom: 10px;
 }
 
 .content {
