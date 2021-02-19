@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 import { PopularPage } from './pages/popular';
 import { MovieDetailsPage } from './pages/movie-details';
@@ -20,6 +21,7 @@ function App() {
             <Route exact={true} path={'/'} component={PopularPage}/>
             <Route exact={true} path={'/movie/:id'} component={MovieDetailsPage}/>
             <Route exact={true} path={'/favorite'} component={FavoritePage}/>
+            <Redirect to={'/'}/>
           </Switch>
         </main>
       </div>
