@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { PopularPage } from './pages/popular';
 import { MovieDetailsPage } from './pages/movie-details';
+import { FavoritePage } from './pages/favorite';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Switch>
             <Route exact={true} path={'/'} component={PopularPage}/>
             <Route exact={true} path={'/movie/:id'} component={MovieDetailsPage}/>
+            <Route exact={true} path={'/favorite'} component={FavoritePage}/>
           </Switch>
         </main>
       </div>

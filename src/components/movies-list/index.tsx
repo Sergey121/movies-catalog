@@ -17,9 +17,9 @@ const MoviesList = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      {movies.map(m => {
+      {movies.map((m, index) => {
         return (
-          <MovieItem onMovieSelected={handleSelectMovie} key={m.id} movie={m}/>
+          <MovieItem onMovieSelected={handleSelectMovie} key={index} movie={m}/>
         );
       })}
     </div>

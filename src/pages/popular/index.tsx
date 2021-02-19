@@ -7,20 +7,25 @@ import { useHistory } from 'react-router-dom';
 
 const PopularPage = () => {
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
   const [list, setList] = useState<Movie[]>([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await API.getList();
-        setList(res.results);
+        setLoading(true);
+        const res = await API.getList(page);
+        setList(list.concat(res.results));
       } catch (e) {
         console.log(e);
+      } finally {
+        setLoading(false);
       }
     };
 
     getData();
-  }, []);
+  }, [page]);
 
   const handleSelectMovie = useCallback((movie: Movie) => {
     history.push(`/movie/${movie.id}`, {
@@ -28,9 +33,27 @@ const PopularPage = () => {
     });
   }, [history]);
 
+  const handleLoadMore = useCallback(() => {
+    setPage(page + 1);
+  }, [page]);
+
+  if (loading && list.length === 0) {
+    return (
+      <div className={styles.wrapper}>
+        <div className={styles.loading}>
+          Loading...
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.wrapper}>
+      <h1 className={styles.title}>Popular</h1>
       <MoviesList onMovieSelected={handleSelectMovie} movies={list}/>
+      <div className={styles.btnWrapper}>
+        <button className={styles.btn} disabled={loading} onClick={handleLoadMore}>Load more</button>
+      </div>
     </div>
   );
 }
