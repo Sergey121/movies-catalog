@@ -1,9 +1,19 @@
+@import "src/scss/mixins";
+
 .wrapper {
 
 }
 
 .content {
   display: flex;
+
+  @include tablet {
+    flex-direction: column;
+  }
+
+  @include phone {
+    flex-direction: column;
+  }
 }
 
 .poster {
@@ -15,6 +25,15 @@
   margin: 28px;
   position: relative;
   flex-shrink: 0;
+
+  @include tablet {
+    margin: 28px auto;
+  }
+
+  @include phone {
+    margin: 28px auto;
+    width: 240px;
+  }
 }
 
 .aboutMovie {

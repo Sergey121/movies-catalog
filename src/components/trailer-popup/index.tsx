@@ -20,8 +20,8 @@ const TrailerPopup = (props: Props) => {
       <div className={styles.content} ref={contentRef}>
         <button className={styles.closeBtn} onClick={onClose}><CloseIcon/></button>
         <iframe
+          className={styles.frame}
           id="ytplayer"
-          width="640" height="360"
           src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
           frameBorder="0"
         />

@@ -1,3 +1,5 @@
+@import "src/scss/mixins";
+
 .wrapper {
   position: absolute;
   top: 0;
@@ -29,5 +31,14 @@
     width: 48px;
     height: 48px;
     fill: var(--color-light);
+  }
+}
+
+.frame {
+  width: 640px;
+  height: 360px;
+
+  @include phone {
+    width: 100%;
   }
 }
