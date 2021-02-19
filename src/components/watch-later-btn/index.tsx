@@ -12,7 +12,9 @@ type Props = {
 const WatchLaterBtn = (props: Props) => {
   const { movie } = props;
 
-  const [movies, setMovies] = useState<Movie[]>(restoreData(STORE_KEYS.watchLaterMovies, []));
+  const getMovies: () => Movie[] = useCallback(() => restoreData(STORE_KEYS.watchLaterMovies, []), []);
+
+  const [movies, setMovies] = useState<Movie[]>(getMovies());
 
   const isExist = useMemo(() => {
     return !!movies.find(m => m.id === movie.id);
@@ -21,7 +23,7 @@ const WatchLaterBtn = (props: Props) => {
   const handleRemove = useCallback((e) => {
     e.stopPropagation();
 
-    const index = movies.findIndex(m => m.id === movie.id);
+    const index = getMovies().findIndex(m => m.id === movie.id);
 
     if (index !== -1) {
       movies.splice(index, 1);
@@ -33,7 +35,7 @@ const WatchLaterBtn = (props: Props) => {
   const handleAdd = useCallback((e) => {
     e.stopPropagation();
 
-    const d = movies.concat(movie);
+    const d = getMovies().concat(movie);
     setMovies(d);
     storeData(STORE_KEYS.watchLaterMovies, d);
   }, [movie, movies]);
