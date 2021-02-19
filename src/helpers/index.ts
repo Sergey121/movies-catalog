@@ -9,6 +9,7 @@ export const getFullImagePath = (path: string | null | undefined) => {
 
 export const STORE_KEYS = {
   favoriteMovies: 'favorite_movies',
+  watchLaterMovies: 'watch_later',
 };
 
 export const storeData = (key: string, data: object) => {

@@ -1,3 +1,4 @@
+@import "src/scss/mixins";
 @import "src/scss/constants";
 
 .wrapper {
@@ -9,6 +10,10 @@
   left: 0;
   transform: translateY(-100%);
   transition: transform 0.5s ease-in-out;
+
+  @include phone {
+    transform: translateY(0%) translateX(-100%);
+  }
 }
 
 .opened {

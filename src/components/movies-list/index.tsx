@@ -6,10 +6,11 @@ import { MovieItem } from './movie-item';
 type Props = {
   movies: Movie[];
   onMovieSelected?: (movie: Movie) => void;
+  movieExtraContent?: (movie: Movie) => React.ReactNode;
 }
 
 const MoviesList = (props: Props) => {
-  const { movies, onMovieSelected = () => {} } = props;
+  const { movies, onMovieSelected = () => {}, movieExtraContent = () => null } = props;
 
   const handleSelectMovie = useCallback((movie: Movie) => {
     onMovieSelected(movie);
@@ -19,7 +20,7 @@ const MoviesList = (props: Props) => {
     <div className={styles.wrapper}>
       {movies.map((m, index) => {
         return (
-          <MovieItem onMovieSelected={handleSelectMovie} key={index} movie={m}/>
+          <MovieItem extraContent={movieExtraContent} onMovieSelected={handleSelectMovie} key={index} movie={m}/>
         );
       })}
     </div>

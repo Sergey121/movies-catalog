@@ -10,6 +10,7 @@ import {
 import { PopularPage } from './pages/popular';
 import { MovieDetailsPage } from './pages/movie-details';
 import { FavoritePage } from './pages/favorite';
+import { WatchLaterPage } from './pages/watch-later';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route exact={true} path={'/'} component={PopularPage}/>
             <Route exact={true} path={'/movie/:id'} component={MovieDetailsPage}/>
             <Route exact={true} path={'/favorite'} component={FavoritePage}/>
+            <Route exact={true} path={'/watch-later'} component={WatchLaterPage}/>
             <Redirect to={'/'}/>
           </Switch>
         </main>

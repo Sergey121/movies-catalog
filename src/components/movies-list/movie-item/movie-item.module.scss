@@ -1,10 +1,11 @@
 @import "src/scss/mixins";
 
 .wrapper {
-
+  background-color: var(--color-nav-bar-bg);
 }
 
 .content {
+  padding: 8px;
   @include phone {
     display: flex;
     justify-content: center;
@@ -25,7 +26,11 @@
 }
 
 .title {
+  margin: 12px 0;
   color: var(--color-light);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .bookmark {

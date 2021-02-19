@@ -4,6 +4,7 @@ import { MoviesList } from '../../components/movies-list';
 import { API } from '../../api';
 import { Movie } from '../../models';
 import { useHistory } from 'react-router-dom';
+import { WatchLaterBtn } from '../../components/watch-later-btn';
 
 const PopularPage = () => {
   const history = useHistory();
@@ -37,6 +38,12 @@ const PopularPage = () => {
     setPage(page + 1);
   }, [page]);
 
+  const handleRenderWatchLaterBtn = useCallback((movie: Movie) => {
+    return (
+      <WatchLaterBtn movie={movie}/>
+    );
+  }, []);
+
   if (loading && list.length === 0) {
     return (
       <div className={styles.wrapper}>
@@ -50,7 +57,11 @@ const PopularPage = () => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Popular</h1>
-      <MoviesList onMovieSelected={handleSelectMovie} movies={list}/>
+      <MoviesList
+        onMovieSelected={handleSelectMovie}
+        movies={list}
+        movieExtraContent={handleRenderWatchLaterBtn}
+      />
       <div className={styles.btnWrapper}>
         <button className={styles.btn} disabled={loading} onClick={handleLoadMore}>Load more</button>
       </div>

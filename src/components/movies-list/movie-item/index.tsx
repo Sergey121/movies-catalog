@@ -8,10 +8,11 @@ import { Rating } from '../../rating';
 type Props = {
   movie: Movie;
   onMovieSelected: (movie: Movie) => void;
+  extraContent?: (movie: Movie) => React.ReactNode;
 };
 
 const MovieItem = (props: Props) => {
-  const { movie, onMovieSelected } = props;
+  const { movie, onMovieSelected, extraContent } = props;
 
   const handleSelect = useCallback(() => {
     onMovieSelected(movie);
@@ -29,6 +30,7 @@ const MovieItem = (props: Props) => {
         <div className={styles.title}>
           {movie.title}
         </div>
+        {extraContent && extraContent(movie)}
       </div>
     </div>
   );
