@@ -19,7 +19,7 @@ const MovieItem = (props: Props) => {
   }, [onMovieSelected, movie])
 
   return (
-    <div className={styles.wrapper} style={{}} onClick={handleSelect}>
+    <div className={styles.wrapper} onClick={handleSelect}>
       <div className={styles.poster} style={{
         backgroundImage: `url(${getFullImagePath(movie.poster_path)})`
       }}>
