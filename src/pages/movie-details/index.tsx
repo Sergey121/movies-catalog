@@ -91,10 +91,10 @@ const MovieDetailsPage = () => {
           <h1>{movie.title}</h1>
           <div className={styles.subtitle}>{movie.overview}</div>
           <Rating voteAverage={movie.vote_average}/>
-          <button onClick={handleOpenTrailerPopup} className={styles.trailer}>
+          {video && <button onClick={handleOpenTrailerPopup} className={styles.trailer}>
             <PlayBtn/>
             <span>Trailer</span>
-          </button>
+          </button>}
         </div>
       </div>
       {showTrailer && video && <TrailerPopup videoId={video.key} onClose={handleCloseTrailerPopup}/>}
