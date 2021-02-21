@@ -5,6 +5,8 @@ Simple test project used [TMDB api](https://www.themoviedb.org/documentation/api
 
 [Demo](https://sergey121.github.io/movies-catalog/)
 
+Because of `gh-pages` I use `HashRouter` instead of `BrowserRouter`
+
 ---
 ## Available Scripts
 
